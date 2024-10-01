@@ -7,6 +7,6 @@ import "fmt"
 
 func main() {
 	var message string = "Hi 👧🏽 and 👦🏽"
-	message_in_runes := []rune(message)
-	fmt.Println(string(message_in_runes[3]))
+	messageInRunes := []rune(message)
+	fmt.Println(string(messageInRunes[3]))
 }

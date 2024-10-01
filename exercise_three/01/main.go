@@ -10,13 +10,13 @@ import "fmt"
 func main() {
 	var greeting []string = []string{"Hello", "Hola", "नमस्कार", "こんにちは", "Привіт"}
 
-	first_subslice := greeting[:2]
-	second_subslice := greeting[1:4]
-	third_subslice := greeting[3:]
+	firstSubslice := greeting[:2]
+	secondSubslice := greeting[1:4]
+	thirdSubslice := greeting[3:]
 
-	fmt.Println("First subslice =", first_subslice)
-	fmt.Println("Second subslice =", second_subslice)
-	fmt.Println("Third subslice =", third_subslice)
+	fmt.Println("First subslice =", firstSubslice)
+	fmt.Println("Second subslice =", secondSubslice)
+	fmt.Println("Third subslice =", thirdSubslice)
 
 }
 
