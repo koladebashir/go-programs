@@ -10,11 +10,10 @@ import "fmt"
 
 func main() {
 	var total int
-
 	for i := 0; i < 10; i++{
-		total := total + i		// This is the bug in the code, there is variable shadowing occuring on this line
+		total := total + i		// Bug: There is variable shadowing occuring on this line
 		fmt.Println(total)		// Correct syntax: total = total + i or total += i
 	}
-
+	fmt.Println(total)
 }
 
