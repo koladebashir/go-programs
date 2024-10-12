@@ -1,3 +1,4 @@
+// This is an implementatio of the cat terminal utility using Go
 package main
 
 import (
@@ -6,7 +7,7 @@ import (
 	"fmt"
 	"io"
 )
-// creating a helper function to open file and return a closing function
+// Helper function to open a file and return a closure to close the file
 func getFile(name string) (*os.File, func(), error) {
 	file, err := os.Open(name)
 	if err != nil {
