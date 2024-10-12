@@ -1,4 +1,4 @@
-// This is an implementatio of the cat terminal utility using Go
+// This is an implementation of the cat terminal utility using Go
 package main
 
 import (
