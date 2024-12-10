@@ -1,3 +1,4 @@
+// Example from chapter 7 of Jon Bodner - Learning Go
 package main
 
 import "fmt"
