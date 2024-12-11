@@ -15,12 +15,8 @@ func add(x, y int) (int, error) { return x + y, nil}
 func sub(x, y int) (int, error) { return x - y, nil}
 func mul(x, y int) (int, error) { return x * y, nil}
 func div(x, y int) (int, error) {
-	var err error
-	if y == 0 {
-		err = errors.New("division by zero")
-		return 0, err
-	}
-	return x / y, err
+	if y == 0 { return 0, errors.New("division by zero") }
+	return x / y, nil
 }
 
 var operationMap = map[string]func(int, int) (int, error){
