@@ -1,11 +1,13 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"os/exec"
-	"time"
 	"os"
+	"os/exec"
 	"strings"
+	"time"
+	"log"
 )
 
 func GetBatteryPercentage() string {
@@ -31,7 +33,7 @@ func GetBatteryPercentage() string {
 func main() {
 
 	if len(os.Args) != 2 {
-		fmt.Println("Insufficent number of arguments provided")
+		log.Fatal(errors.New("insufficent number of arguments provided"))
 	}
 
 	// Takes the users specified battery level from the argument provided when the script runs
@@ -45,8 +47,11 @@ func main() {
 			s := fmt.Sprintf(`display notification "Battery Level reached %v" with title "Battery Notification"`, batteryPercent)
 			cmd2 := exec.Command("osascript", "-e", s)
 			cmd2.Output()
+			break
 		}
 		time.Sleep(2 * time.Second)
 
 	}
+
+	fmt.Println("Exiting program...")
 }
