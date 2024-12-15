@@ -52,7 +52,7 @@ func main() {
 				fmt.Printf("%v. %+v\n", i, v.Name)
 			}
 			fmt.Println()
-			fmt.Println("Task ID to delete: ")
+			fmt.Print("Task ID to delete: ")
 			reader := bufio.NewReader(os.Stdin)
 			id, _ := reader.ReadString('\n')
 			ID, err := strconv.Atoi(strings.TrimSpace(id))
@@ -62,7 +62,8 @@ func main() {
 
 			_, ok := database[ID]
 			if !ok {
-				log.Fatal("Incorrect ID")
+				fmt.Println("Incorrect ID")
+				break
 			}
 
 			delete(database, ID)
