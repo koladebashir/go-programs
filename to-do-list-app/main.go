@@ -1,7 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
+	"log"
 )
 
 type Task struct {
@@ -18,28 +23,54 @@ func main() {
 	taskNum := 0
 	var optionSelected int
 
-	for {
+	for ans := ""; ans != "N" && ans != "n"; {
 		fmt.Printf("Select an option: ")
 		fmt.Scanln(&optionSelected)
 
 		switch optionSelected {
 		case 1:
 			taskNum++
-			var newTask string
+			
 			fmt.Print("Add new task: ")
-			fmt.Scanln(&newTask)
-	
+			reader := bufio.NewReader(os.Stdin)
+			taskName, _ := reader.ReadString('\n')
+
 			database[taskNum] = Task{
-				Name: newTask,
+				Name: taskName,
 				Status: "Ongoing",
 			}
 	
 			fmt.Println("Task Added!")
+			fmt.Println()
 		case 2:
-			for i, v := range database {
-				fmt.Printf("%v. %v\n", i, v)
+			for i := 0; i < len(database); i++ {
+				fmt.Printf("%v. %+v\n", i+1, database[i+1].Name)
 			}
+			fmt.Println()
+		case 3:
+			for i, v := range database {
+				fmt.Printf("%v. %+v\n", i, v.Name)
+			}
+			fmt.Println()
+			fmt.Println("Task ID to delete: ")
+			reader := bufio.NewReader(os.Stdin)
+			id, _ := reader.ReadString('\n')
+			ID, err := strconv.Atoi(strings.TrimSpace(id))
+			if err != nil {
+				log.Fatal("Enter a number")
+			}
+
+			_, ok := database[ID]
+			if !ok {
+				log.Fatal("Incorrect ID")
+			}
+
+			delete(database, ID)
+			fmt.Println("Deletion Successful")
 		}
+
+		fmt.Print("Would you like to perform another action (Y/N): ")
+		fmt.Scanln(&ans)
 	}
 	
 }
